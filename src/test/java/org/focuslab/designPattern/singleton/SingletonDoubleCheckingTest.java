@@ -2,14 +2,14 @@ package org.focuslab.designPattern.singleton;
 
 import org.junit.Test;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 /**
- * Created by Akky on 05-04-2016.
+ * Created by Akky on 06-04-2016.
  */
-public class SimpleSingletonTest {
+public class SingletonDoubleCheckingTest {
 
-    private SimpleSingleton simpleSingleton = null;
+    private SingletonDoubleChecking singleton = null;
 
     @Test
     public void getInstance() throws Exception {
@@ -20,29 +20,22 @@ public class SimpleSingletonTest {
         thread2.start();
         thread1.join();
         thread2.join();
-
-    }
-
-    @Test(expected = IllegalAccessException.class)
-    public void getInstanceByReflection() throws ClassNotFoundException, IllegalAccessException, InstantiationException {
-
-        simpleSingleton = (SimpleSingleton) Class.forName("org.focuslab.designPattern.singleton.SimpleSingleton").newInstance();
-
     }
 
     private class SingletonRunnable implements Runnable{
 
         @Override
         public void run() {
-            SimpleSingleton s = SimpleSingleton.getInstance();
-            if (simpleSingleton==null)
-            simpleSingleton = s;
+            SingletonDoubleChecking s = SingletonDoubleChecking.getInstance();
+            if (singleton==null)
+                singleton = s;
             try {
                 Thread.sleep(20); // wait for 20 millisecond
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            assertTrue(s==simpleSingleton);
+            assertTrue(s==singleton);
         }
     }
+
 }

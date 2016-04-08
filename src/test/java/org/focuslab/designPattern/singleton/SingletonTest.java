@@ -1,17 +1,24 @@
 package org.focuslab.designPattern.singleton;
 
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
 
 import java.io.*;
+import java.lang.reflect.InvocationTargetException;
 
 import static org.junit.Assert.*;
 
 /**
  * Created by Akky on 05-04-2016.
  */
+
 public class SingletonTest {
 
     private Singleton singleton = null;
+
+
+
 
     @Test
     public void getInstance() throws Exception {
@@ -20,13 +27,8 @@ public class SingletonTest {
         Thread thread2 = new Thread(new SingletonRunnable());
         thread1.start();
         thread2.start();
-
-    }
-
-    @Test(expected = IllegalAccessException.class)
-    public void getInstanceByReflection() throws ClassNotFoundException, IllegalAccessException, InstantiationException {
-
-        singleton = (Singleton) Class.forName("org.focuslab.designPattern.singleton.Singleton").newInstance();
+        thread1.join();
+        thread2.join();
 
     }
 
@@ -46,6 +48,41 @@ public class SingletonTest {
         }
     }
 
+    @Test(expected = IllegalAccessException.class)
+    public void getInstanceByReflection() throws ClassNotFoundException, IllegalAccessException, InstantiationException {
+
+        singleton = (Singleton) Class.forName("org.focuslab.designPattern.singleton.Singleton").newInstance();
+
+    }
+    class MyClassLoader extends ClassLoader{
+
+        public MyClassLoader(){
+            super(Singleton.class.getClassLoader());
+        }
+    }
+    @Test
+    public void testByDifferentClassLoader(){
+        try {
+
+            Singleton s1 = (Singleton)  Class.forName(Singleton.class.getCanonicalName())
+                    .getDeclaredMethod("getInstance",null).invoke(null,null);
+
+            Singleton s2 = (Singleton) Class.forName(Singleton.class.getCanonicalName(),false,new MyClassLoader())
+                    .getDeclaredMethod("getInstance",null).invoke(null,null);
+
+
+
+            assertTrue(s1==s2);
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (NoSuchMethodException e) {
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
+            e.printStackTrace();
+        }
+    }
 
     @Test
     public void testDeserializeInstance(){
