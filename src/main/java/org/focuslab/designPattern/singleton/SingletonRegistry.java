@@ -5,6 +5,8 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicReference;
 
 /**
  * Created by Akky on 06-04-2016.
@@ -25,10 +27,10 @@ public class SingletonRegistry {
 
 
         Object singleton = registry.get(clazz);
-
         if (singleton==null){
-
                 synchronized (clazz) {
+                    singleton = registry.get(clazz);
+                    if (singleton==null)
                     try {
 
                         Constructor constructor = clazz.getDeclaredConstructor(null);

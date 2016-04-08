@@ -41,8 +41,7 @@ public class SingletonRegistryTest {
             thread2.join();
             assertNotNull(runnable1.s);
             assertNotNull(runnable2.s);
-            assertTrue(singleton==runnable1.s);
-            assertTrue(singleton==runnable2.s);
+           assertTrue(runnable1.s==runnable2.s);
         }
         catch (Exception e){
             fail(e.getMessage());
