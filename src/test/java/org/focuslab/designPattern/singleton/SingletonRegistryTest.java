@@ -23,7 +23,7 @@ public class SingletonRegistryTest {
        return Arrays.asList(new Class[][] {{SingletonClazz1.class}});
    }
 
-    @Parameterized.Parameter
+    @Parameterized.Parameter(value = 0)
     public Class clazz ;
 
     private Object singleton = null;

@@ -22,21 +22,25 @@ public class SingletonTest {
 
     @Test
     public void getInstance() throws Exception {
-
-        Thread thread1 = new Thread(new SingletonRunnable());
-        Thread thread2 = new Thread(new SingletonRunnable());
+        SingletonRunnable runnable1 = new SingletonRunnable();
+        SingletonRunnable runnable2 = new SingletonRunnable();
+        Thread thread1 = new Thread(runnable1);
+        Thread thread2 = new Thread(runnable2);
         thread1.start();
         thread2.start();
         thread1.join();
         thread2.join();
+        assertNotNull(runnable1.s);
+        assertNotNull(runnable2.s);
+        assertTrue(runnable1.s == runnable2.s);
 
     }
 
     private class SingletonRunnable implements Runnable{
-
+        Singleton s = null;
         @Override
         public void run() {
-            Singleton s = Singleton.getInstance();
+            s = Singleton.getInstance();
             if (singleton==null)
                 singleton = s;
             try {

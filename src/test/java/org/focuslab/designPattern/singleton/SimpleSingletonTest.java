@@ -2,6 +2,7 @@ package org.focuslab.designPattern.singleton;
 
 import org.junit.Test;
 
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 /**
@@ -13,13 +14,17 @@ public class SimpleSingletonTest {
 
     @Test
     public void getInstance() throws Exception {
-
-        Thread thread1 = new Thread(new SingletonRunnable());
-        Thread thread2 = new Thread(new SingletonRunnable());
+        SingletonRunnable runnable1 = new SingletonRunnable();
+        SingletonRunnable runnable2 = new SingletonRunnable();
+        Thread thread1 = new Thread(runnable1);
+        Thread thread2 = new Thread(runnable2);
         thread1.start();
         thread2.start();
         thread1.join();
         thread2.join();
+        assertNotNull(runnable1.s);
+        assertNotNull(runnable2.s);
+        assertTrue(runnable1.s == runnable2.s);
 
     }
 
@@ -31,10 +36,10 @@ public class SimpleSingletonTest {
     }
 
     private class SingletonRunnable implements Runnable{
-
+        SimpleSingleton s = null;
         @Override
         public void run() {
-            SimpleSingleton s = SimpleSingleton.getInstance();
+            s = SimpleSingleton.getInstance();
             if (simpleSingleton==null)
             simpleSingleton = s;
             try {
