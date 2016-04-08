@@ -49,7 +49,7 @@ public class SingletonRegistry {
                 }
         }
 
-        return null;//(T) clazz.cast(singleton);
+        return (T) clazz.cast(singleton);
 
     }
 
