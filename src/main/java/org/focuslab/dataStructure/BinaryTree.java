@@ -26,7 +26,7 @@ public class BinaryTree<T> {
         preorder(root.left,preorderResult);
         preorder(root.right,preorderResult);
     }
-
+  
     public ArrayList<T> inorderTraversal(){
         ArrayList<T> inorderResult = new ArrayList<T>();
         inorder(this.root,inorderResult);
