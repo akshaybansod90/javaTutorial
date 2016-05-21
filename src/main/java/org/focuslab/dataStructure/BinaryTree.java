@@ -1,6 +1,7 @@
 package org.focuslab.dataStructure;
 
 import java.util.ArrayList;
+import java.util.function.Consumer;
 
 /**
  * Created by Akky on 06-05-2016.
@@ -48,13 +49,27 @@ public class BinaryTree<T> {
         return postorderResult;
     }
 
+    public void postorderTraversal(Consumer<T> consumer) {
+        postorder(this.root, consumer);
+
+    }
+
+    private void postorder(Node<T> root, Consumer<T> consumer) {
+        if (root == null) {
+            return;
+        }
+        postorder(root.left, consumer);
+        postorder(root.right, consumer);
+        consumer.accept(root.data);
+    }
+
     private void postorder(Node<T> root, ArrayList<T> postorderResult) {
         if (root == null) {
             return;
         }
         postorder(root.left, postorderResult);
-        postorderResult.add(root.getData());
         postorder(root.right, postorderResult);
+        postorderResult.add(root.getData());
     }
 
     public static class Node<T> {
