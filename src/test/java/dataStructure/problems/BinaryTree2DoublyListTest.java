@@ -1,9 +1,7 @@
-package org.focuslab.dataStructure.problems;
+package dataStructure.problems;
 
-import org.focuslab.dataStructure.BinaryTree;
+import dataStructure.BinaryTree;
 import org.junit.Test;
-
-import java.util.List;
 
 import static org.junit.Assert.*;
 

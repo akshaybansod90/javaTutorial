@@ -1,4 +1,4 @@
-package org.focuslab.designPattern.singleton;
+package designPattern.singleton;
 
 /**
  * Created by Akky on 06-04-2016.

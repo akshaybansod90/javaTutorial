@@ -1,8 +1,6 @@
-package org.focuslab.dataStructure.problems;
+package dataStructure.problems;
 
-import org.focuslab.dataStructure.BinaryTree;
-
-import java.util.Deque;
+import dataStructure.BinaryTree;
 
 /**
  * Created by Akky on 07-05-2016.

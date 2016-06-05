@@ -1,4 +1,4 @@
-package org.focuslab.dataStructure;
+package dataStructure;
 
 import java.util.ArrayList;
 import java.util.function.Consumer;

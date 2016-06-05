@@ -1,4 +1,4 @@
-package org.focuslab.multithreading;
+package multithreading;
 
 import java.util.ArrayList;
 import java.util.List;

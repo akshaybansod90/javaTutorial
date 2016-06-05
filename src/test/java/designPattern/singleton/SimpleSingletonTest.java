@@ -1,4 +1,4 @@
-package org.focuslab.designPattern.singleton;
+package designPattern.singleton;
 
 import org.junit.Test;
 
@@ -31,7 +31,7 @@ public class SimpleSingletonTest {
     @Test(expected = IllegalAccessException.class)
     public void getInstanceByReflection() throws ClassNotFoundException, IllegalAccessException, InstantiationException {
 
-        simpleSingleton = (SimpleSingleton) Class.forName("org.focuslab.designPattern.singleton.SimpleSingleton").newInstance();
+        simpleSingleton = (SimpleSingleton) Class.forName("SimpleSingleton").newInstance();
 
     }
 

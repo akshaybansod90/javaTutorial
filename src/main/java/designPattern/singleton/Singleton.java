@@ -1,4 +1,4 @@
-package org.focuslab.designPattern.singleton;
+package designPattern.singleton;
 
 import java.io.Serializable;
 

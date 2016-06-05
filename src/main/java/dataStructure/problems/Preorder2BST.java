@@ -1,6 +1,6 @@
-package org.focuslab.dataStructure.problems;
+package dataStructure.problems;
 
-import org.focuslab.dataStructure.BinaryTree;
+import dataStructure.BinaryTree;
 
 /**
  * Created by Akky on 07-05-2016.

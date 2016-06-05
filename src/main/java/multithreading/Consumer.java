@@ -1,9 +1,7 @@
-package org.focuslab.multithreading;
+package multithreading;
 
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.TimeUnit;
-
-import static javafx.scene.input.KeyCode.T;
 
 /**
  * Created by Akky on 09-04-2016.

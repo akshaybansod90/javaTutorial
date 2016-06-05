@@ -1,4 +1,4 @@
-package org.focuslab.multithreading;
+package multithreading;
 
 import java.util.List;
 import java.util.concurrent.BlockingQueue;

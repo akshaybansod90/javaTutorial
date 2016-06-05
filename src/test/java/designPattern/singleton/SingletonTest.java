@@ -1,8 +1,6 @@
-package org.focuslab.designPattern.singleton;
+package designPattern.singleton;
 
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
 
 import java.io.*;
 import java.lang.reflect.InvocationTargetException;
@@ -55,7 +53,7 @@ public class SingletonTest {
     @Test(expected = IllegalAccessException.class)
     public void getInstanceByReflection() throws ClassNotFoundException, IllegalAccessException, InstantiationException {
 
-        singleton = (Singleton) Class.forName("org.focuslab.designPattern.singleton.Singleton").newInstance();
+        singleton = (Singleton) Class.forName("Singleton").newInstance();
 
     }
     class MyClassLoader extends ClassLoader{

@@ -1,9 +1,6 @@
-package org.focuslab.dataStructure.problems;
+package dataStructure.problems;
 
-import org.focuslab.dataStructure.BinaryTree;
-
-import java.util.ArrayList;
-import java.util.function.Consumer;
+import dataStructure.BinaryTree;
 
 /**
  * Created by Akky on 20-05-2016.
