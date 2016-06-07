@@ -19,6 +19,18 @@ public class BinarySearchTreeInsertion<T extends Comparable>{
         BinaryTree.Node<T> parent = null;
 
         while (true) {
+            if (node == null) {
+                node = new BinaryTree.Node<T>();
+                node.setData(t);
+                if (parent == null) {
+                    root= node;
+                }
+                else if (parent.getData().compareTo(t)<0)
+                    parent.setRight(node);
+                else
+                    parent.setLeft(node);
+                break;
+            }
             if (node.getData().equals(t)) {
                 return false;
             }
@@ -28,15 +40,7 @@ public class BinarySearchTreeInsertion<T extends Comparable>{
             } else {
                 node = node.getLeft();
             }
-            if (node == null) {
-                node = new BinaryTree.Node<T>();
-                node.setData(t);
-                if (parent.getData().compareTo(t)<0)
-                    parent.setRight(node);
-                else
-                    parent.setLeft(node);
-                break;
-            }
+
         }
         return true;
     }
