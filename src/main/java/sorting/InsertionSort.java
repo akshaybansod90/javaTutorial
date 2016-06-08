@@ -1,5 +1,6 @@
 package sorting;
 
+import java.util.Comparator;
 import java.util.Objects;
 
 /**
@@ -18,6 +19,17 @@ public class InsertionSort {
             arr[j+1]=temp;
         }
 
+        return arr;
+    }
+
+    public static <T> T[] insertionSort(T[] arr, Comparator<T> c){
+        for (int i = 0; i < arr.length; i++) {
+            T temp = arr[i];
+            for (int j = i-1; j >= 0 && c.compare(temp,arr[j])<0 ; j--) {
+                arr[j + 1] = arr[j];
+                --j;
+            }
+        }
         return arr;
     }
 }
