@@ -24,12 +24,16 @@ public class InsertionSort {
 
     public static <T> T[] insertionSort(T[] arr, Comparator<T> c){
         for (int i = 0; i < arr.length; i++) {
-            T temp = arr[i];
-            for (int j = i-1; j >= 0 && c.compare(temp,arr[j])<0 ; j--) {
-                arr[j + 1] = arr[j];
-                --j;
+            for (int j = i; j > 0 && c.compare(arr[j-1],arr[j])>0 ; j--) {
+                swap(arr,j-1,j);
             }
         }
         return arr;
+    }
+
+    private static <T> void swap(T[] arr, int a, int b) {
+        T temp = arr[a];
+        arr[a] = arr[b];
+        arr[b]=temp;
     }
 }
